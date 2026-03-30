@@ -1,3 +1,9 @@
 RewriteEngine On
+
+# Redirect www to non-www
 RewriteCond %{HTTP_HOST} ^www\.celestialvisions\.co\.za [NC]
 RewriteRule ^(.*)$ https://celestialvisions.co.za/$1 [R=301,L]
+
+# Remove index.html from URLs
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^(.+)/index\.html$ /$1/ [R=301,L]
