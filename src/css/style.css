@@ -688,6 +688,13 @@ textarea.form-control {
     display: block;
 }
 
+.info-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--clr-accent-secondary);
+    flex-shrink: 0;
+}
+
 .info-item h4 {
     font-family: var(--ff-display);
     font-size: 0.975rem;
