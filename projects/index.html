@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects | Celestial Visions</title>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/src/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <header>
+        <div class="logo">
+            <a href="/index.html"><img src="/assets/logo.png" alt="Celestial Visions Logo"></a>
+        </div>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="/index.html" class="nav-link">Home</a></li>
+                <li><a href="/about/index.html" class="nav-link">About</a></li>
+                <li><a href="/services/index.html" class="nav-link">Services</a></li>
+                <li><a href="/packages/index.html" class="nav-link">Packages</a></li>
+                <li><a href="/projects/index.html" class="nav-link">Projects</a></li>
+                <li><a href="/contact/index.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="swup" class="transition-fade">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 id="hero-title">The <span class="text-nebula">Archive of Visions</span></h1>
+                <p id="hero-subtitle">
+                    Explore our complete collection of digital masterpieces, from minimalist portfolios to complex enterprise solutions.
+                </p>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                
+                <div class="portfolio-grid">
+                    <!-- Project 1 -->
+                    <div class="portfolio-item reveal">
+                        <img src="/assets/nebula_bg.png" alt="Nebula Tech Solutions">
+                        <div class="portfolio-overlay">
+                            <h3>Nebula Tech</h3>
+                            <p>SaaS Landing Page Design</p>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="portfolio-item reveal">
+                        <img src="/assets/nebula_bg.png" alt="Zenith Architecture" class="hue-shift">
+                        <div class="portfolio-overlay">
+                            <h3>Zenith Arch</h3>
+                            <p>Minimalist Portfolio Experience</p>
+                        </div>
+                    </div>
+                    <!-- Project 3 (NEW) -->
+                    <div class="portfolio-item reveal">
+                        <img src="/assets/nebula_bg.png" alt="Nova E-commerce" style="filter: hue-rotate(180deg);">
+                        <div class="portfolio-overlay">
+                            <h3>Nova E-commerce</h3>
+                            <p>Premium Retail Solutions</p>
+                        </div>
+                    </div>
+                    <!-- Project 4 (NEW) -->
+                    <div class="portfolio-item reveal">
+                        <img src="/assets/nebula_bg.png" alt="Astra Logistics" style="filter: hue-rotate(270deg);">
+                        <div class="portfolio-overlay">
+                            <h3>Astra Logistics</h3>
+                            <p>Enterprise Dashboard & Tracking</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding text-center">
+            <div class="container">
+                <div class="glass-card reveal contact-card">
+                    <h2 class="section-title">Inspired by <span class="text-nebula">The Void?</span></h2>
+                    <p class="contact-desc">Let's start your project today.</p>
+                    <a href="/contact/index.html" class="cta-button">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Celestial Visions. Crafted with precision in the digital void.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Celestial Visions</title>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/src/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <header>
+        <div class="logo">
+            <a href="/index.html"><img src="/assets/logo.png" alt="Celestial Visions Logo"></a>
+        </div>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="/index.html" class="nav-link">Home</a></li>
+                <li><a href="/about/index.html" class="nav-link">About</a></li>
+                <li><a href="/services/index.html" class="nav-link">Services</a></li>
+                <li><a href="/packages/index.html" class="nav-link">Packages</a></li>
+                <li><a href="/projects/index.html" class="nav-link">Projects</a></li>
+                <li><a href="/contact/index.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="swup" class="transition-fade">
+        <section class="hero" style="min-height: 80vh;">
+            <div class="hero-content">
+                <h1 id="hero-title">Connect with the <span class="text-nebula">Void</span></h1>
+                <p id="hero-subtitle">Ready to transform your digital presence? Send us a transmission and let's create something extraordinary.</p>
+                <div id="hero-cta-container"></div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container" style="max-width: 1000px;">
+                <div class="glass-card reveal">
+                    <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 2rem; text-align: left;">Send a <span class="text-nebula">Transmission</span></h2>
+                    <form action="contact.php" method="POST" class="contact-form" id="contact-form">
+                        <div class="services-grid" style="gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-bottom: 0;">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="What should we call you?" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="_replyto" class="form-control" placeholder="Where can we reach you?" required>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 2rem;">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="What's your project about?">
+                        </div>
+                        <div class="form-group" style="margin-top: 2rem;">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Tell us about your vision..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Transmission</button>
+                    </form>
+
+                    <div class="contact-info-grid">
+                        <div class="info-item">
+                            <div class="icon">📧</div>
+                            <h4>Email Us</h4>
+                            <p>hello@celestialvisions.co.za</p>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon">📍</div>
+                            <h4>Location</h4>
+                            <p>Based in South Africa, Serving the Universe</p>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon">📱</div>
+                            <h4>Socials</h4>
+                            <p>Find us on Facebook & Instagram</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Celestial Visions. Crafted with precision in the digital void.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

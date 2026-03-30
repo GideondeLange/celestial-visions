@@ -1,0 +1,21 @@
+{
+  "name": "vite-project",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@swup/body-class-plugin": "^3.3.0",
+    "@swup/preload-plugin": "^3.2.11",
+    "swup": "^4.8.3",
+    "vite": "^8.0.0"
+  },
+  "dependencies": {
+    "gsap": "^3.14.2",
+    "three": "^0.183.2"
+  }
+}

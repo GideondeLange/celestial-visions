@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celestial Visions | Premium Web Design Agency</title>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Celestial Visions | Premium Web Design Agency">
+    <meta name="description" content="Celestial Visions - Crafting futuristic, high-end web experiences that boost your business with cosmic precision.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://celestialvisions.co.za/">
+    <meta property="og:title" content="Celestial Visions | Premium Web Design Agency">
+    <meta property="og:description" content="Futuristic, high-end web experiences crafted with celestial precision.">
+    <meta property="og:image" content="/assets/nebula_bg.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://celestialvisions.co.za/">
+    <meta property="twitter:title" content="Celestial Visions | Premium Web Design Agency">
+    <meta property="twitter:description" content="Futuristic, high-end web experiences crafted with celestial precision.">
+    <meta property="twitter:image" content="/assets/nebula_bg.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/css/style.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    
+    <header>
+        <div class="logo">
+            <a href="/index.html"><img src="/assets/logo.png" alt="Celestial Visions Logo"></a>
+        </div>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="/index.html" class="nav-link">Home</a></li>
+                <li><a href="/about/index.html" class="nav-link">About</a></li>
+                <li><a href="/services/index.html" class="nav-link">Services</a></li>
+                <li><a href="/packages/index.html" class="nav-link">Packages</a></li>
+                <li><a href="/projects/index.html" class="nav-link">Projects</a></li>
+                <li><a href="/contact/index.html" class="nav-link">Contact</a></li>
+                <li><a href="#" class="nav-link social-icon">FB</a></li>
+                <li><a href="#" class="nav-link social-icon">IG</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main id="swup" class="transition-fade">
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 id="hero-title">Craft your Website to <span class="text-nebula">Boost your Business</span></h1>
+                <p id="hero-subtitle">This is Where Imagination Becomes Reality. Elevate your brand with digital precision and cosmic creativity.</p>
+                <div class="hero-btns" style="opacity: 0; transform: translateY(20px);" id="hero-cta-container">
+                    <a href="#packages" class="cta-button">View Packages</a>
+                    <a href="/projects/index.html" class="cta-link" style="margin-left: 2rem; color: var(--clr-star-white); text-decoration: none; border-bottom: 1px solid var(--clr-nebula-purple); padding-bottom: 2px;">Explore the Void</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+            </div>
+        </section>
+        
+        <section id="about" class="section-padding">
+            <div class="container">
+                <h2 class="section-title reveal">Empowering Small <span class="text-nebula">Businesses Online</span></h2>
+                <div class="services-grid">
+                    <article class="glass-card reveal">
+                        <h3>Your Vision, Our Creation</h3>
+                        <p>At Celestial Visions, we specialize in creating and hosting websites tailored for small businesses, helping them establish a strong online presence effortlessly and affordably.</p>
+                    </article>
+                    <article class="glass-card reveal">
+                        <h3>Crafting Digital Experiences</h3>
+                        <p>Our team is dedicated to providing personalized website solutions, ensuring that every small business can shine online with a professional presence.</p>
+                        <a href="/about/index.html" class="nav-link" style="margin-top: 2rem; display: block; opacity: 1; color: var(--clr-nebula-cyan);">The Vision →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <section id="services" class="section-padding">
+            <div class="container">
+                <h2 class="section-title reveal">Core <span class="text-nebula">Services</span></h2>
+                <div class="services-grid">
+                    <article class="glass-card reveal">
+                        <div class="card-icon">💻</div>
+                        <h3>Web Hosting</h3>
+                        <p>We offer fast, secure, and reliable web hosting services to keep your website online and performing at its best.</p>
+                    </article>
+                    <article class="glass-card reveal">
+                        <div class="card-icon">🌐</div>
+                        <h3>Domain Hosting</h3>
+                        <p>We provide seamless domain hosting services to help you register, manage, and secure your online presence with ease.</p>
+                    </article>
+                    <article class="glass-card reveal">
+                        <div class="card-icon">🎨</div>
+                        <h3>Custom Website Design</h3>
+                        <p>Our team specializes in creating custom websites tailored to your unique needs, combining functionality with stunning design.</p>
+                        <a href="/services/index.html" class="nav-link" style="margin-top: 2rem; display: block; opacity: 1; color: var(--clr-nebula-cyan);">Our Expertise →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <section id="packages" class="section-padding">
+            <div class="container">
+                <h2 class="section-title reveal">Our <span class="text-nebula">Packages</span></h2>
+                <div class="services-grid">
+                    <article class="glass-card reveal">
+                        <h3>Stellar Starter</h3>
+                        <p>Perfect for simple, high-impact needs. From <strong>R 2,500 Setup</strong> + <strong>R 350 p/m</strong>.</p>
+                        <a href="/packages/index.html" class="nav-link" style="margin-top: 2rem; display: block; opacity: 1; color: var(--clr-nebula-cyan);">Inquire Now</a>
+                    </article>
+                    <article class="glass-card reveal">
+                        <h3>Nebula Business</h3>
+                        <p>Google My Business setup and full optimization. From <strong>R 5,500 Setup</strong> + <strong>R 550 p/m</strong>.</p>
+                        <a href="/packages/index.html" class="nav-link" style="margin-top: 2rem; display: block; opacity: 1; color: var(--clr-nebula-cyan);">Inquire Now</a>
+                    </article>
+                    <article class="glass-card reveal">
+                        <h3>Galactic Corporate</h3>
+                        <p>Bespoke functionality for industry leaders. From <strong>R 11,500 Setup</strong> + <strong>R 950 p/m</strong>.</p>
+                        <a href="/packages/index.html" class="nav-link" style="margin-top: 2rem; display: block; opacity: 1; color: var(--clr-nebula-cyan);">Inquire Now</a>
+                    </article>
+                    <article class="glass-card reveal">
+                        <h3>Cosmic Store</h3>
+                        <p>Full-featured E-commerce solution. From <strong>R 17,500 Setup</strong> + <strong>R 1,500 p/m</strong>.</p>
+                        <a href="/packages/index.html" class="nav-link" style="margin-top: 2rem; display: block; opacity: 1; color: var(--clr-nebula-cyan);">Inquire Now</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <section id="work" class="section-padding">
+            <div class="container">
+                <h2 class="section-title reveal">Preview Our <span class="text-nebula">Projects</span></h2>
+                <p class="text-center reveal" style="color: var(--clr-stardust); margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto;">Preview our projects to see the innovative websites and solutions we've crafted for our clients.</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item reveal">
+                        <img src="/assets/nebula_bg.png" alt="Nebula Tech Solutions">
+                        <div class="portfolio-overlay">
+                            <h3>Nebula Tech</h3>
+                            <p>SaaS Landing Page Design</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal">
+                        <img src="/assets/nebula_bg.png" alt="Zenith Architecture" class="hue-shift">
+                        <div class="portfolio-overlay">
+                            <h3>Zenith Arch</h3>
+                            <p>Minimalist Portfolio Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center reveal" style="margin-top: 4rem;">
+                    <a href="/projects/index.html" class="cta-button">View All Projects</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="section-padding text-center">
+            <div class="container">
+                <div class="glass-card reveal contact-card">
+                    <h2 class="section-title">Ready to <span class="text-nebula">Translate Your Vision?</span></h2>
+                    <p class="contact-desc">Let's create something extraordinary together.</p>
+                    <a href="/contact/index.html" class="cta-button">Connect Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Celestial Visions. Crafted with precision in the digital void.</p>
+        </div>
+    </footer>
+    
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

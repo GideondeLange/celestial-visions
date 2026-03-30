@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -r contact.php '/c/Users/Gideon/Desktop/Websites/Celestial visions/' --include=*.html)"
+    ]
+  }
+}
