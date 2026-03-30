@@ -23,15 +23,15 @@
     <meta property="twitter:description" content="Custom website design, web hosting and domain management for small businesses in Boksburg and across South Africa.">
     <meta property="twitter:image" content="/assets/nebula_bg.png">
 
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="/src/css/style.css">
-    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/src/css/style.css">
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
@@ -53,55 +53,67 @@
     </header>
 
     <main id="swup" class="transition-fade">
-        <section class="hero">
-            <div class="hero-content">
-                <h1 id="hero-title">Our <span class="text-nebula">Core Services</span></h1>
-                <p id="hero-subtitle">Comprehensive digital solutions designed to launch, protect, and grow your online presence.</p>
-            </div>
-        </section>
+        <header class="page-header">
+            <h1 id="hero-title">What We <span class="text-nebula">Offer</span></h1>
+            <p id="hero-subtitle">Everything you need to launch, protect, and grow your business online — under one roof.</p>
+        </header>
 
-        <section class="section-padding">
+        <section class="section">
             <div class="container">
-                <div class="services-grid">
-                    <article class="glass-card reveal">
-                        <div class="card-icon">💻</div>
+                <div class="services-grid reveal-group">
+                    <article class="glass-card">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="6" rx="1.5"/>
+                            <rect x="2" y="15" width="20" height="6" rx="1.5"/>
+                            <circle cx="6.5" cy="6" r="1" fill="currentColor" stroke="none"/>
+                            <circle cx="6.5" cy="18" r="1" fill="currentColor" stroke="none"/>
+                        </svg>
                         <h3>Web Hosting</h3>
-                        <p>We offer fast, secure, and reliable web hosting services to keep your website online and performing at its best. Our infrastructure is optimized for speed and maximum uptime.</p>
-                        <ul style="margin-top: 2rem; list-style: none; color: var(--clr-stardust);">
-                            <li style="margin-bottom: 0.5rem;">✦ 99.9% Uptime Guarantee</li>
-                            <li style="margin-bottom: 0.5rem;">✦ Weekly Backups</li>
-                            <li style="margin-bottom: 0.5rem;">✦ SSL Certificates Included</li>
+                        <p>Fast, secure, and reliable hosting to keep your website online and performing at its best. Our infrastructure is optimised for speed and maximum uptime.</p>
+                        <ul class="feature-list">
+                            <li>99.9% Uptime Guarantee</li>
+                            <li>Weekly Backups</li>
+                            <li>SSL Certificate Included</li>
                         </ul>
                     </article>
-                    <article class="glass-card reveal">
-                        <div class="card-icon">🌐</div>
-                        <h3>Domain Hosting</h3>
-                        <p>We provide seamless domain hosting services to help you register, manage, and secure your online presence with ease. Your domain is the cornerstone of your brand.</p>
-                        <ul style="margin-top: 2rem; list-style: none; color: var(--clr-stardust);">
-                            <li style="margin-bottom: 0.5rem;">✦ Instant Registration</li>
-                            <li style="margin-bottom: 0.5rem;">✦ DNS Management</li>
-                            <li style="margin-bottom: 0.5rem;">✦ Domain Privacy Protection</li>
+                    <article class="glass-card">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M12 3c-2 3-3 5.5-3 9s1 6 3 9"/>
+                            <path d="M12 3c2 3 3 5.5 3 9s-1 6-3 9"/>
+                            <line x1="3.5" y1="9" x2="20.5" y2="9"/>
+                            <line x1="3.5" y1="15" x2="20.5" y2="15"/>
+                        </svg>
+                        <h3>Domain Registration</h3>
+                        <p>Seamless domain registration and management to secure your online identity. Your domain is the foundation of your brand — we make it easy.</p>
+                        <ul class="feature-list">
+                            <li>Instant Registration</li>
+                            <li>DNS Management</li>
+                            <li>Domain Privacy Protection</li>
                         </ul>
                     </article>
-                    <article class="glass-card reveal">
-                        <div class="card-icon">🎨</div>
+                    <article class="glass-card">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 3L21 7L8 20L3 21L4 16L17 3Z"/>
+                            <line x1="14" y1="6" x2="18" y2="10"/>
+                        </svg>
                         <h3>Custom Website Design</h3>
-                        <p>Our team specializes in creating custom websites tailored to your unique needs, combining functionality with stunning design. We build experiences that convert visitors into customers.</p>
-                        <ul style="margin-top: 2rem; list-style: none; color: var(--clr-stardust);">
-                            <li style="margin-bottom: 0.5rem;">✦ Responsive Layouts</li>
-                            <li style="margin-bottom: 0.5rem;">✦ SEO Optimized Structure</li>
-                            <li style="margin-bottom: 0.5rem;">✦ Conversion Focused Design</li>
+                        <p>Custom websites built around your brand, your goals, and your customers. We combine great design with functionality that converts visitors into clients.</p>
+                        <ul class="feature-list">
+                            <li>Mobile-Friendly Layouts</li>
+                            <li>SEO Optimised Structure</li>
+                            <li>Conversion Focused Design</li>
                         </ul>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="section-padding text-center">
+        <section class="section text-center">
             <div class="container">
                 <div class="glass-card reveal contact-card">
-                    <h2 class="section-title">Ready to <span class="text-nebula">Launch?</span></h2>
-                    <p class="contact-desc">Examine our specialized packages to find the perfect fit for your business.</p>
+                    <h2 class="section-title">Ready to <span class="text-nebula">Get Online?</span></h2>
+                    <p class="contact-desc">Browse our packages to find the right fit for your business and budget.</p>
                     <a href="/packages/index.html" class="cta-button">View Packages</a>
                 </div>
             </div>
@@ -110,7 +122,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Celestial Visions. Crafted with precision in the digital void.</p>
+            <p>&copy; 2026 Celestial Visions. Web design for businesses that mean business.</p>
         </div>
     </footer>
 

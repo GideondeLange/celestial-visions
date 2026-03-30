@@ -29,7 +29,7 @@ for (let i = 0; i < starCount; i++) {
         y = (Math.random() - 0.5) * 150;
         z = (Math.random() - 0.5) * 150;
     } while (Math.abs(x) < 5 && Math.abs(y) < 5 && z > 20);
-    positions[i * 3] = x;
+    positions[i * 3]     = x;
     positions[i * 3 + 1] = y;
     positions[i * 3 + 2] = z;
 }
@@ -38,9 +38,9 @@ const starGeometry = new THREE.BufferGeometry();
 starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 const starMaterial = new THREE.PointsMaterial({
     color: 0xffffff,
-    size: 0.22, // Adjusted to halfway point based on feedback (original 0.1, previous 0.35)
+    size: 0.22,
     transparent: true,
-    opacity: 0.9, // Increased from 0.8
+    opacity: 0.9,
     sizeAttenuation: true
 });
 
@@ -48,7 +48,7 @@ const starfield = new THREE.Points(starGeometry, starMaterial);
 scene.add(starfield);
 
 scene.add(new THREE.AmbientLight(0xffffff, 0.4));
-const plight = new THREE.PointLight(0x6e44ff, 1.5);
+const plight = new THREE.PointLight(0x7c5cfc, 1.5);
 plight.position.set(10, 10, 10);
 scene.add(plight);
 
@@ -58,41 +58,34 @@ let targetMouseX = 0;
 let targetMouseY = 0;
 
 document.addEventListener('mousemove', (e) => {
-    // Normalize mouse coordinates (-1 to 1)
     targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
     targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
 });
 
 let currentRotationX = 0;
 let currentRotationY = 0;
-let currentCameraX = 0;
-let currentCameraY = 0;
 
 function animate() {
     requestAnimationFrame(animate);
-    
-    // Lerp mouse position for extra smoothness
+
     mouseX += (targetMouseX - mouseX) * 0.05;
     mouseY += (targetMouseY - mouseY) * 0.05;
 
-    // Rotation reaction (increased sensitivity)
     const targetRotY = mouseX * 0.2;
     const targetRotX = mouseY * 0.2;
-    
-    // Camera parallax reaction (subtle movement)
-    const targetCamX = mouseX * 5;
-    const targetCamY = -mouseY * 5;
-    
-    // Smooth transitions
+
+    // Reduced parallax intensity — was 5, now 2
+    const targetCamX = mouseX * 2;
+    const targetCamY = -mouseY * 2;
+
     starfield.rotation.y += (targetRotY - starfield.rotation.y) * 0.05;
     starfield.rotation.x += (targetRotX - starfield.rotation.x) * 0.05;
 
     camera.position.x += (targetCamX - camera.position.x) * 0.05;
     camera.position.y += (targetCamY - camera.position.y) * 0.05;
-    
-    // Base rotation
+
     starfield.rotation.y += 0.0005;
-    
+
     renderer.render(scene, camera);
 }
 animate();
@@ -103,74 +96,79 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// --- PAGE-SPECIFIC INITIALIZATION (Runs on load and every Swup transition) ---
+// --- PAGE-SPECIFIC INITIALIZATION ---
 
 function initContent() {
-    // 1. Update Navigation Active State
+    // 1. Navigation active state — class only, no inline styles
     const currentPath = window.location.pathname;
     document.querySelectorAll('nav .nav-link').forEach(link => {
-        // Handle both root / and /index.html
         const linkPath = link.getAttribute('href');
-        const isActive = (currentPath === linkPath) || 
+        const isActive = (currentPath === linkPath) ||
                          (currentPath === '/' && linkPath === '/index.html') ||
                          (currentPath.endsWith('/') && currentPath + 'index.html' === linkPath);
-        
+
         if (isActive) {
             link.classList.add('active');
-            link.style.opacity = "1";
-            link.style.color = "var(--clr-nebula-cyan)";
         } else {
             link.classList.remove('active');
-            link.style.opacity = "";
-            link.style.color = "";
         }
     });
 
-    // 2. Kill old ScrollTriggers to prevent memory leaks and ghost triggers
-    ScrollTrigger.getAll().forEach(t => t.kill());
-
-    // 3. Hero Entrance
+    // 2. Hero Entrance — tighter timing
     const heroTitle = document.querySelector('#hero-title');
     if (heroTitle) {
         const heroSubtitle = document.querySelector('#hero-subtitle');
         const heroCta = document.querySelector('#hero-cta-container');
-        
+
         const toAnimate = [heroTitle];
         if (heroSubtitle) toAnimate.push(heroSubtitle);
         if (heroCta) toAnimate.push(heroCta);
 
         gsap.set(toAnimate, { opacity: 0, y: 20 });
-        const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-        tl.to(heroTitle, { opacity: 1, y: 0, duration: 1.5, delay: 0.5 });
-        
-        if (heroSubtitle) tl.to(heroSubtitle, { opacity: 1, y: 0, duration: 1.2 }, '-=1');
-        if (heroCta) tl.to(heroCta, { opacity: 1, y: 0, duration: 1 }, '-=0.8');
-          
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-        if (scrollIndicator) {
-            gsap.set(scrollIndicator, { opacity: 0 });
-            tl.to(scrollIndicator, { opacity: 1, duration: 1, delay: 0.2 });
-        }
+
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        tl.to(heroTitle, { opacity: 1, y: 0, duration: 1.1, delay: 0.3 });
+        if (heroSubtitle) tl.to(heroSubtitle, { opacity: 1, y: 0, duration: 0.9 }, '-=0.7');
+        if (heroCta)      tl.to(heroCta,      { opacity: 1, y: 0, duration: 0.7 }, '-=0.6');
     }
 
-    // 4. Scroll Reveals
+    // 3. Individual .reveal elements — simple fade-up, no clipPath
     gsap.utils.toArray('.reveal').forEach(el => {
-        gsap.fromTo(el, {
-            opacity: 0,
-            y: 40,
-            clipPath: 'inset(100% 0% 0% 0%)'
-        }, {
-            opacity: 1,
-            y: 0,
-            clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 1.2,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 85%',
-                toggleActions: 'play none none reverse'
+        gsap.fromTo(el,
+            { opacity: 0, y: 28 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 88%',
+                    toggleActions: 'play none none none'
+                }
             }
-        });
+        );
+    });
+
+    // 4. Staggered card groups
+    gsap.utils.toArray('.reveal-group').forEach(container => {
+        const children = container.querySelectorAll('.glass-card, .feature-card, .portfolio-item, .icon-feature');
+        if (children.length === 0) return;
+        gsap.fromTo(children,
+            { opacity: 0, y: 32 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out',
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: container,
+                    start: 'top 82%',
+                    toggleActions: 'play none none none'
+                }
+            }
+        );
     });
 
     // 5. Contact Form
@@ -180,7 +178,7 @@ function initContent() {
             e.preventDefault();
             const submitBtn = contactForm.querySelector('.submit-button');
             const originalText = submitBtn.innerText;
-            submitBtn.innerText = 'TRANSMITTING...';
+            submitBtn.innerText = 'Sending...';
             submitBtn.disabled = true;
 
             try {
@@ -191,7 +189,7 @@ function initContent() {
                 });
 
                 if (response.ok) {
-                    submitBtn.innerText = 'TRANSMISSION RECEIVED';
+                    submitBtn.innerText = 'Message Sent';
                     contactForm.reset();
                     setTimeout(() => {
                         submitBtn.innerText = originalText;
@@ -201,13 +199,13 @@ function initContent() {
                     throw new Error();
                 }
             } catch {
-                submitBtn.innerText = 'RETRY TRANSMISSION';
+                submitBtn.innerText = 'Something went wrong — try again';
                 submitBtn.disabled = false;
             }
         });
     }
 
-    // 6. Camera Parallax on scroll
+    // 6. Camera scroll parallax
     window.removeEventListener('scroll', handleCameraScroll);
     window.addEventListener('scroll', handleCameraScroll);
 }
@@ -217,11 +215,11 @@ function handleCameraScroll() {
     gsap.to(camera.position, {
         z: 30 - scrollPercent * 15,
         duration: 1,
-        ease: "power1.out"
+        ease: 'power1.out'
     });
 }
 
-// --- SWUP INITIALIZATION ---
+// --- SWUP ---
 
 const swup = new Swup({
     plugins: [
@@ -230,11 +228,16 @@ const swup = new Swup({
     ]
 });
 
-// Run on initial load
-initContent();
+// Kill ScrollTriggers before the leave animation starts
+swup.hooks.on('visit:start', () => {
+    ScrollTrigger.getAll().forEach(t => t.kill());
+});
 
-// Run on every content swap
+// Scroll + init after content swap
 swup.hooks.on('content:replace', () => {
-    window.scrollTo(0, 0); 
+    window.scrollTo({ top: 0, behavior: 'instant' });
     initContent();
 });
+
+// Run on initial load
+initContent();

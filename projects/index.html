@@ -23,15 +23,15 @@
     <meta property="twitter:description" content="Browse our portfolio of websites built for small businesses and startups across South Africa. Based in Boksburg.">
     <meta property="twitter:image" content="/assets/nebula_bg.png">
 
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="/src/css/style.css">
-    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/src/css/style.css">
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
@@ -53,60 +53,51 @@
     </header>
 
     <main id="swup" class="transition-fade">
-        <section class="hero">
-            <div class="hero-content">
-                <h1 id="hero-title">The <span class="text-nebula">Archive of Visions</span></h1>
-                <p id="hero-subtitle">
-                    Explore our complete collection of digital masterpieces, from minimalist portfolios to complex enterprise solutions.
-                </p>
-            </div>
-        </section>
+        <header class="page-header">
+            <h1 id="hero-title">Our <span class="text-nebula">Work</span></h1>
+            <p id="hero-subtitle">A selection of websites we've built for businesses across South Africa.</p>
+        </header>
 
-        <section class="section-padding">
+        <section class="section">
             <div class="container">
-                
-                <div class="portfolio-grid">
-                    <!-- Project 1 -->
-                    <div class="portfolio-item reveal">
+                <div class="portfolio-grid reveal-group">
+                    <div class="portfolio-item">
                         <img src="/assets/nebula_bg.png" alt="Nebula Tech Solutions">
                         <div class="portfolio-overlay">
                             <h3>Nebula Tech</h3>
                             <p>SaaS Landing Page Design</p>
                         </div>
                     </div>
-                    <!-- Project 2 -->
-                    <div class="portfolio-item reveal">
+                    <div class="portfolio-item">
                         <img src="/assets/nebula_bg.png" alt="Zenith Architecture" class="hue-shift">
                         <div class="portfolio-overlay">
                             <h3>Zenith Arch</h3>
-                            <p>Minimalist Portfolio Experience</p>
+                            <p>Minimalist Portfolio</p>
                         </div>
                     </div>
-                    <!-- Project 3 (NEW) -->
-                    <div class="portfolio-item reveal">
-                        <img src="/assets/nebula_bg.png" alt="Nova E-commerce" style="filter: hue-rotate(180deg);">
+                    <div class="portfolio-item">
+                        <img src="/assets/nebula_bg.png" alt="Nova E-commerce" class="hue-shift-180">
                         <div class="portfolio-overlay">
                             <h3>Nova E-commerce</h3>
-                            <p>Premium Retail Solutions</p>
+                            <p>Premium Retail Store</p>
                         </div>
                     </div>
-                    <!-- Project 4 (NEW) -->
-                    <div class="portfolio-item reveal">
-                        <img src="/assets/nebula_bg.png" alt="Astra Logistics" style="filter: hue-rotate(270deg);">
+                    <div class="portfolio-item">
+                        <img src="/assets/nebula_bg.png" alt="Astra Logistics" class="hue-shift-270">
                         <div class="portfolio-overlay">
                             <h3>Astra Logistics</h3>
-                            <p>Enterprise Dashboard & Tracking</p>
+                            <p>Enterprise Dashboard</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-padding text-center">
+        <section class="section text-center">
             <div class="container">
                 <div class="glass-card reveal contact-card">
-                    <h2 class="section-title">Inspired by <span class="text-nebula">The Void?</span></h2>
-                    <p class="contact-desc">Let's start your project today.</p>
+                    <h2 class="section-title">Ready to <span class="text-nebula">Start Your Project?</span></h2>
+                    <p class="contact-desc">Let's build something great for your business.</p>
                     <a href="/contact/index.html" class="cta-button">Get in Touch</a>
                 </div>
             </div>
@@ -115,7 +106,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Celestial Visions. Crafted with precision in the digital void.</p>
+            <p>&copy; 2026 Celestial Visions. Web design for businesses that mean business.</p>
         </div>
     </footer>
 
