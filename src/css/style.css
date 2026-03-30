@@ -159,7 +159,7 @@ p {
    HEADER & NAV
    ============================================= */
 
-header {
+body > header {
     position: fixed;
     top: 0;
     width: 100%;
