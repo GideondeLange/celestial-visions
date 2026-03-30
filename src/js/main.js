@@ -23,9 +23,15 @@ camera.position.setZ(30);
 const starCount = 1000;
 const positions = new Float32Array(starCount * 3);
 for (let i = 0; i < starCount; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 150;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 150;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 150;
+    let x, y, z;
+    do {
+        x = (Math.random() - 0.5) * 150;
+        y = (Math.random() - 0.5) * 150;
+        z = (Math.random() - 0.5) * 150;
+    } while (Math.abs(x) < 5 && Math.abs(y) < 5 && z > 20);
+    positions[i * 3] = x;
+    positions[i * 3 + 1] = y;
+    positions[i * 3 + 2] = z;
 }
 
 const starGeometry = new THREE.BufferGeometry();
