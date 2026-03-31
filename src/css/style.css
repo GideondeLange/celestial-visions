@@ -438,6 +438,12 @@ nav ul {
     line-height: 1.75;
 }
 
+.package-price {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
 /* =============================================
    SERVICES GRID
    ============================================= */
