@@ -439,9 +439,10 @@ nav ul {
 }
 
 .package-price {
-    color: #ffffff;
+    color: var(--clr-text-primary);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
 }
 
 /* =============================================
