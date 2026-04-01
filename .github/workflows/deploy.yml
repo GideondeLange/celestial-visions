@@ -35,4 +35,4 @@ jobs:
           local-dir: ./dist/
           protocol: ftp
           port: 21
-          timeout: 60000
+          timeout: 120000
