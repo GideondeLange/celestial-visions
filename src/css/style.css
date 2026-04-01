@@ -438,7 +438,7 @@ nav ul {
     line-height: 1.75;
 }
 
-.package-price {
+.glass-card p.package-price {
     color: var(--clr-text-primary);
     font-weight: 700;
     font-size: 1.1rem;
