@@ -498,8 +498,8 @@ nav ul {
    ============================================= */
 
 .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
 }
 
@@ -507,9 +507,10 @@ nav ul {
     position: relative;
     border-radius: var(--card-radius);
     overflow: hidden;
-    height: 420px;
+    height: 320px;
     border: 1px solid var(--clr-border);
     cursor: pointer;
+    width: 100%;
 }
 
 .portfolio-item img {
@@ -571,7 +572,7 @@ nav ul {
     margin-top: 0.75rem;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--clr-accent);
+    color: var(--clr-text-primary);
     opacity: 0;
     transform: translateY(6px);
     transition: opacity var(--dur-base) var(--ease-in-out), transform var(--dur-base) var(--ease-in-out);
@@ -580,7 +581,6 @@ nav ul {
 .portfolio-item:hover .portfolio-link {
     opacity: 1;
     transform: translateY(0);
-    color: var(--clr-text-primary);
 }
 
 /* =============================================
