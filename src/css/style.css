@@ -566,6 +566,22 @@ nav ul {
     color: var(--clr-text-secondary);
 }
 
+.portfolio-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--clr-accent);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity var(--dur-base) var(--ease-in-out), transform var(--dur-base) var(--ease-in-out);
+}
+
+.portfolio-item:hover .portfolio-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* =============================================
    CONTACT
    ============================================= */
