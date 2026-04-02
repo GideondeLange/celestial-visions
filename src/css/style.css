@@ -500,14 +500,14 @@ nav ul {
 .portfolio-grid {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 3.5rem;
 }
 
 .portfolio-item {
     position: relative;
     border-radius: var(--card-radius);
     overflow: hidden;
-    height: 320px;
+    height: 480px;
     border: 1px solid var(--clr-border);
     cursor: pointer;
     width: 100%;
