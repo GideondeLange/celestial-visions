@@ -598,7 +598,8 @@ nav ul {
     color: var(--clr-text-secondary);
 }
 
-.container--narrow { max-width: 960px; }
+.container--narrow  { max-width: 960px; }
+.container--portfolio { max-width: 1600px; }
 
 .section-title--left { text-align: left; }
 
