@@ -580,6 +580,7 @@ nav ul {
 .portfolio-item:hover .portfolio-link {
     opacity: 1;
     transform: translateY(0);
+    color: var(--clr-text-primary);
 }
 
 /* =============================================
