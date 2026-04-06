@@ -885,6 +885,9 @@ html.is-animating .transition-fade {
 footer {
     padding: 4rem var(--section-px) 2.5rem;
     border-top: 1px solid var(--clr-border);
+    background: rgba(8, 8, 16, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .footer-grid {
@@ -922,11 +925,16 @@ footer {
     margin-bottom: 1.25rem;
 }
 
+.footer-links {
+    text-align: center;
+}
+
 .footer-links ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+    align-items: center;
 }
 
 .footer-links a {
