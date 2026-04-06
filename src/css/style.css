@@ -885,9 +885,9 @@ html.is-animating .transition-fade {
 footer {
     padding: 4rem var(--section-px) 2.5rem;
     border-top: 1px solid var(--clr-border);
-    background: rgba(8, 8, 16, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(8, 8, 16, 0.92);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
 }
 
 .footer-grid {
@@ -1134,13 +1134,11 @@ body.nav-open {
 
     nav ul {
         position: fixed;
-        top: var(--header-height);
+        top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(8, 8, 16, 0.97);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        background: rgba(8, 8, 16, 1);
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -1148,10 +1146,10 @@ body.nav-open {
         flex-wrap: nowrap;
         opacity: 0;
         pointer-events: none;
-        transform: translateY(-10px);
+        transform: translateY(-12px);
         transition: opacity 0.3s var(--ease-out-expo),
                     transform 0.3s var(--ease-out-expo);
-        z-index: 999;
+        z-index: 998;
     }
 
     nav ul.is-open {
@@ -1161,8 +1159,9 @@ body.nav-open {
     }
 
     .nav-link {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
         opacity: 0.9;
+        letter-spacing: 0.02em;
     }
 
     .social-icon {
