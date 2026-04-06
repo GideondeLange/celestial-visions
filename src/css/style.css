@@ -169,9 +169,18 @@ body > header {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
+    border-bottom: 1px solid var(--clr-border);
+}
+
+/* backdrop-filter lives on ::before so it doesn't create a containing block
+   for position:fixed children (nav overlay), which would break its viewport coverage */
+body > header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background: rgba(8, 8, 16, 0.7);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--clr-border);
+    z-index: -1;
 }
 
 .logo img {
@@ -1008,7 +1017,8 @@ body.nav-open {
     border: none;
     cursor: pointer;
     padding: 6px 4px;
-    z-index: 1001;
+    z-index: 1200;
+    position: relative;
 }
 
 .nav-toggle span {
@@ -1138,30 +1148,36 @@ body.nav-open {
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(8, 8, 16, 1);
+        background: rgba(8, 8, 16, 0.98);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2.5rem;
+        gap: 2rem;
         flex-wrap: nowrap;
         opacity: 0;
         pointer-events: none;
-        transform: translateY(-12px);
+        transform: translateX(100%);
         transition: opacity 0.3s var(--ease-out-expo),
-                    transform 0.3s var(--ease-out-expo);
-        z-index: 998;
+                    transform 0.35s var(--ease-out-expo);
+        z-index: 1100;
     }
 
     nav ul.is-open {
         opacity: 1;
         pointer-events: all;
-        transform: translateY(0);
+        transform: translateX(0);
     }
 
     .nav-link {
-        font-size: 1.35rem;
-        opacity: 0.9;
-        letter-spacing: 0.02em;
+        font-size: 1.5rem;
+        font-family: var(--ff-display);
+        letter-spacing: 0.04em;
+        opacity: 0.95;
+    }
+
+    .nav-link:hover {
+        color: var(--clr-accent);
+        opacity: 1;
     }
 
     .social-icon {
