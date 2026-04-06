@@ -883,15 +883,148 @@ html.is-animating .transition-fade {
    ============================================= */
 
 footer {
-    padding: 3rem var(--section-px);
-    text-align: center;
+    padding: 4rem var(--section-px) 2.5rem;
     border-top: 1px solid var(--clr-border);
 }
 
-footer p {
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--clr-border);
+}
+
+.footer-brand img {
+    height: 36px;
+    object-fit: contain;
+    filter: brightness(1.1);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.footer-brand p {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--clr-text-secondary);
+    max-width: 260px;
+    margin: 0;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    font-family: var(--ff-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-accent-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.footer-links a {
+    color: var(--clr-text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color var(--dur-fast) var(--ease-in-out);
+}
+
+.footer-links a:hover {
+    color: var(--clr-text-primary);
+}
+
+.footer-contact p {
+    font-size: 0.875rem;
+    color: var(--clr-text-secondary);
+    line-height: 1.9;
+    margin: 0;
+}
+
+.footer-contact a {
+    color: var(--clr-accent-secondary);
+    text-decoration: none;
+    transition: opacity var(--dur-fast) var(--ease-in-out);
+}
+
+.footer-contact a:hover {
+    opacity: 0.75;
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    text-align: center;
+}
+
+.footer-bottom p {
     color: var(--clr-text-tertiary);
-    font-size: 0.825rem;
+    font-size: 0.8rem;
     letter-spacing: 0.02em;
+    margin: 0;
+}
+
+.footer-bottom a {
+    color: var(--clr-accent-primary);
+    text-decoration: none;
+    transition: opacity var(--dur-fast) var(--ease-in-out);
+}
+
+.footer-bottom a:hover {
+    opacity: 0.75;
+}
+
+/* =============================================
+   HAMBURGER MENU
+   ============================================= */
+
+body.nav-open {
+    overflow: hidden;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 4px;
+    z-index: 1001;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--clr-text-primary);
+    border-radius: 2px;
+    transition: transform 0.3s var(--ease-in-out),
+                opacity 0.3s var(--ease-in-out);
+    transform-origin: center;
+}
+
+.nav-toggle.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 /* =============================================
@@ -987,14 +1120,41 @@ footer p {
 }
 
 @media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+
     nav ul {
-        gap: 1.25rem;
-        flex-wrap: wrap;
-        justify-content: flex-end;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(8, 8, 16, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        flex-wrap: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.3s var(--ease-out-expo),
+                    transform 0.3s var(--ease-out-expo);
+        z-index: 999;
+    }
+
+    nav ul.is-open {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
     }
 
     .nav-link {
-        font-size: 0.75rem;
+        font-size: 1.25rem;
+        opacity: 0.9;
     }
 
     .social-icon {
@@ -1016,5 +1176,14 @@ footer p {
 
     .pricing-card {
         margin-top: 1rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
     }
 }

@@ -219,6 +219,34 @@ function handleCameraScroll() {
     });
 }
 
+// --- HAMBURGER MENU ---
+// Nav is outside #swup so it persists — init once, not inside initContent
+
+const navToggle = document.querySelector('.nav-toggle');
+const navList   = document.querySelector('nav ul');
+
+function closeMenu() {
+    if (!navToggle || !navList) return;
+    navToggle.classList.remove('is-open');
+    navList.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+}
+
+if (navToggle && navList) {
+    navToggle.addEventListener('click', () => {
+        const isOpen = navToggle.classList.toggle('is-open');
+        navList.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        document.body.classList.toggle('nav-open', isOpen);
+    });
+
+    // Close when a nav link is clicked
+    navList.addEventListener('click', (e) => {
+        if (e.target.classList.contains('nav-link')) closeMenu();
+    });
+}
+
 // --- SWUP ---
 
 const swup = new Swup({
@@ -228,9 +256,10 @@ const swup = new Swup({
     ]
 });
 
-// Kill ScrollTriggers before the leave animation starts
+// Kill ScrollTriggers + close menu before the leave animation starts
 swup.hooks.on('visit:start', () => {
     ScrollTrigger.getAll().forEach(t => t.kill());
+    closeMenu();
 });
 
 // Scroll + init after content swap
