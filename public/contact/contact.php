@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recipient email
-    $to = "dgdelange13@gmail.com";
+    $to = "gideon@celestialvisions.co.za";
     
     // Form fields
     $name = strip_tags(trim($_POST["name"]));
