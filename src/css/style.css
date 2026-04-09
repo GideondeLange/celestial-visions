@@ -920,7 +920,8 @@ footer {
 }
 
 .footer-brand img {
-    height: 36px;
+    height: 90px;
+    width: auto;
     object-fit: contain;
     filter: brightness(1.1);
     margin-bottom: 1rem;
@@ -1229,5 +1230,9 @@ body.nav-open {
 
     .footer-brand p {
         max-width: 100%;
+    }
+
+    .footer-brand img {
+        height: 70px;
     }
 }
