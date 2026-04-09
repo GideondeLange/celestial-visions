@@ -237,18 +237,37 @@ nav ul {
     width: 100%;
 }
 
+.header-social {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .social-icon {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.25rem 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
     border: 1px solid var(--clr-border);
-    border-radius: 4px;
-    opacity: 0.7;
-    letter-spacing: 0.05em;
+    border-radius: 50%;
+    color: var(--clr-text-secondary);
+    opacity: 0.75;
+    transition: border-color var(--dur-fast) var(--ease-in-out),
+                color var(--dur-fast) var(--ease-in-out),
+                opacity var(--dur-fast) var(--ease-in-out);
+    text-decoration: none;
+}
+
+.social-icon svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
 }
 
 .social-icon:hover {
     border-color: var(--clr-accent-secondary);
+    color: var(--clr-text-primary);
     opacity: 1;
 }
 
@@ -753,6 +772,13 @@ textarea.form-control {
 
 .info-item p a:hover {
     color: #d0edf9;
+}
+
+.info-socials {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
 }
 
 .maps-btn {
