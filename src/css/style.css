@@ -184,8 +184,8 @@ body > header::before {
 }
 
 .logo img {
-    height: auto;
-    width: 180px;
+    height: 56px;
+    width: auto;
     object-fit: contain;
     filter: brightness(1.1);
     transition: opacity var(--dur-fast) var(--ease-in-out);
