@@ -755,6 +755,26 @@ textarea.form-control {
     color: #d0edf9;
 }
 
+.maps-btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    font-family: var(--ff-display);
+    letter-spacing: 0.04em;
+    color: var(--clr-accent);
+    border: 1px solid var(--clr-accent);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background var(--dur-fast) var(--ease-in-out),
+                color var(--dur-fast) var(--ease-in-out);
+}
+
+.maps-btn:hover {
+    background: var(--clr-accent);
+    color: #fff;
+}
+
 /* =============================================
    PRICING & PACKAGES
    ============================================= */
