@@ -26,7 +26,7 @@
     --ff-accent:  var(--ff-display);
 
     /* === LAYOUT === */
-    --header-height:   72px;
+    --header-height:   120px;
     --section-py:      clamp(5rem, 9vw, 9rem);
     --section-px:      clamp(1.5rem, 5vw, 4rem);
     --container-max:   1200px;
@@ -184,8 +184,9 @@ body > header::before {
 }
 
 .logo img {
-    height: 56px;
+    height: 112px;
     width: auto;
+    max-height: calc(var(--header-height) - 8px);
     object-fit: contain;
     filter: brightness(1.1);
     transition: opacity var(--dur-fast) var(--ease-in-out);
@@ -1149,6 +1150,10 @@ body.nav-open {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --header-height: 80px;
+    }
+
     .nav-toggle {
         display: flex;
     }
@@ -1206,6 +1211,11 @@ body.nav-open {
 
     .hero h1 {
         font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .logo img {
+        height: 64px;
+        max-height: calc(var(--header-height) - 8px);
     }
 
     .pricing-card {
