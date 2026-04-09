@@ -618,13 +618,42 @@ nav ul {
    ============================================= */
 
 .contact-card {
-    max-width: 900px;
+    max-width: 760px;
     margin: 0 auto;
+    padding: 3.5rem 2.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(99,77,210,0.08) 0%, rgba(30,180,220,0.06) 100%);
+    border-color: rgba(99,77,210,0.25);
+}
+
+.contact-card .section-title {
+    margin-bottom: 1rem;
+}
+
+.contact-card .cta-button {
+    opacity: 1;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    border-radius: 999px;
+    background: var(--clr-accent-secondary);
+    color: var(--clr-bg-base);
+    border-color: var(--clr-accent-secondary);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    box-shadow: 0 4px 20px rgba(30,180,220,0.25);
+}
+
+.contact-card .cta-button:hover {
+    background: var(--clr-accent-primary);
+    border-color: var(--clr-accent-primary);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(124,92,252,0.35);
 }
 
 .contact-desc {
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
     color: var(--clr-text-secondary);
 }
 
@@ -1325,5 +1354,16 @@ body.nav-open {
 
     .footer-brand img {
         height: 70px;
+    }
+
+    .contact-card {
+        padding: 2.5rem 1.25rem;
+    }
+
+    .contact-card .cta-button {
+        padding: 0.9rem 2rem;
+        width: 100%;
+        text-align: center;
+        display: block;
     }
 }
