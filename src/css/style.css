@@ -489,6 +489,10 @@ nav ul {
     grid-template-columns: repeat(2, 1fr);
 }
 
+.services-grid--4col {
+    grid-template-columns: repeat(4, 1fr);
+}
+
 .card-icon {
     width: 40px;
     height: 40px;
@@ -1268,6 +1272,10 @@ body.nav-open {
     .portfolio-item {
         height: 380px;
     }
+
+    .services-grid--4col {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -1347,8 +1355,32 @@ body.nav-open {
         margin-top: 1rem;
     }
 
-    .services-grid--2col {
+    .services-grid--2col,
+    .services-grid--4col {
         grid-template-columns: 1fr;
+    }
+
+    .services-grid .glass-card {
+        text-align: center;
+    }
+
+    .services-grid .glass-card .card-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .services-grid .glass-card .card-link {
+        display: block;
+        text-align: center;
+    }
+
+    .page-header {
+        text-align: center;
+    }
+
+    .page-header p {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .footer-grid {
