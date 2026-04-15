@@ -960,6 +960,59 @@ textarea.form-control {
     letter-spacing: 0.08em;
 }
 
+/* Simple pricing card style */
+.pkg-price {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--clr-accent-primary);
+    font-family: var(--ff-display);
+    line-height: 1;
+    margin: 1.25rem 0 0.3rem;
+}
+
+.pkg-price small {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--clr-text-secondary);
+    font-family: var(--ff-body);
+    margin-left: 0.15rem;
+}
+
+.pkg-monthly {
+    font-size: 0.875rem;
+    color: var(--clr-text-secondary);
+    margin-bottom: 1.75rem;
+}
+
+.pkg-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.pkg-features li {
+    color: var(--clr-text-secondary);
+    font-size: 0.9rem;
+    padding: 0.5rem 0 0.5rem 1.6rem;
+    position: relative;
+    line-height: 1.4;
+    border-bottom: 1px solid var(--clr-border);
+}
+
+.pkg-features li:first-child {
+    border-top: 1px solid var(--clr-border);
+}
+
+.pkg-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--clr-accent-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    top: 0.48rem;
+}
+
 /* =============================================
    PAGE TRANSITIONS (SWUP)
    ============================================= */
