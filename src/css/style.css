@@ -402,7 +402,8 @@ nav ul {
 /* In-card links */
 .card-link {
     display: inline-block;
-    margin-top: 1.5rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--clr-accent-secondary);
@@ -443,6 +444,8 @@ nav ul {
                 box-shadow var(--dur-base) var(--ease-in-out);
     position: relative;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
 }
 
 .glass-card:hover {
@@ -1448,6 +1451,8 @@ body.nav-open {
 
     .footer-brand img {
         height: 70px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .footer-links ul,
