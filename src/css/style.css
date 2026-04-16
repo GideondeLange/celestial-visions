@@ -1,15 +1,15 @@
 
 :root {
     /* === COLOUR SYSTEM === */
-    --clr-bg-base:            #080810;
-    --clr-bg-surface:         #0e0e1c;
-    --clr-bg-elevated:        #14142a;
+    --clr-bg-base:            #0b0b1a;
+    --clr-bg-surface:         #131330;
+    --clr-bg-elevated:        #1e1e3c;
     --clr-accent-primary:     #7c5cfc;
     --clr-accent-secondary:   #38bdf8;
     --clr-text-primary:       #f0eef8;
-    --clr-text-secondary:     #a09bb8;
-    --clr-text-tertiary:      #5a5572;
-    --clr-border:             rgba(255, 255, 255, 0.07);
+    --clr-text-secondary:     #bab5d0;
+    --clr-text-tertiary:      #7a7590;
+    --clr-border:             rgba(255, 255, 255, 0.11);
 
     /* Legacy aliases — keep so any missed references don't break */
     --clr-space-black:    var(--clr-bg-base);
@@ -435,10 +435,12 @@ nav ul {
    ============================================= */
 
 .glass-card {
-    background: var(--clr-bg-elevated);
-    border: 1px solid var(--clr-border);
+    background: linear-gradient(145deg, rgba(38, 32, 75, 0.97) 0%, rgba(24, 24, 52, 0.97) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.11);
     border-radius: var(--card-radius);
     padding: var(--card-padding);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: border-color var(--dur-base) var(--ease-in-out),
                 transform var(--dur-base) var(--ease-out-expo),
                 box-shadow var(--dur-base) var(--ease-in-out);
@@ -1260,7 +1262,7 @@ body.nav-open {
     align-items: center;
     gap: 0.75rem;
     padding: 0.875rem 1rem;
-    background: rgba(255,255,255,0.03);
+    background: rgba(255,255,255,0.055);
     border: 1px solid var(--clr-border);
     border-radius: 8px;
     font-size: 0.875rem;
