@@ -241,11 +241,30 @@ if (navToggle && navList) {
         document.body.classList.toggle('nav-open', isOpen);
     });
 
-    // Close when a nav link is clicked
+    // Close when a nav link or dropdown item is clicked
     navList.addEventListener('click', (e) => {
-        if (e.target.classList.contains('nav-link')) closeMenu();
+        if (e.target.classList.contains('nav-link') && !e.target.classList.contains('nav-dropdown-toggle')) closeMenu();
+        if (e.target.classList.contains('nav-dropdown-item')) closeMenu();
     });
 }
+
+// Mobile dropdown toggle (desktop uses CSS :hover)
+document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            const dropdown = toggle.closest('.nav-dropdown');
+            dropdown.classList.toggle('is-open');
+        }
+    });
+});
+
+// Close dropdown when clicking outside (desktop)
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown')) {
+        document.querySelectorAll('.nav-dropdown.is-open').forEach(d => d.classList.remove('is-open'));
+    }
+});
 
 // --- SWUP ---
 
