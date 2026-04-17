@@ -670,6 +670,13 @@ nav ul {
     color: var(--clr-text-secondary);
 }
 
+.cta-button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .container--narrow  { max-width: 960px; }
 .container--portfolio { max-width: 1600px; }
 
@@ -1575,8 +1582,15 @@ body.nav-open {
 
     .contact-card .cta-button {
         padding: 0.9rem 2rem;
-        width: 100%;
         text-align: center;
+    }
+
+    .cta-button-group {
+        flex-direction: column;
+    }
+
+    .cta-button-group .cta-button {
+        width: 100%;
         display: block;
     }
 
