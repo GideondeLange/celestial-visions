@@ -76,7 +76,7 @@
                 <li class="nav-dropdown">
                     <a href="/packages/" class="nav-link nav-dropdown-toggle">Website Design Packages <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
                     <ul class="nav-dropdown-menu">
-                        <li><a href="/packages/" class="nav-dropdown-item">Website Design Packages</a></li>
+                        <li><a href="/packages/" class="nav-dropdown-item">Website Design</a></li>
                         <li><a href="/hosting/" class="nav-dropdown-item">Web Hosting &amp; Care Plans</a></li>
                         <li><a href="/maintenance/" class="nav-dropdown-item">Website Maintenance</a></li>
                     </ul>
@@ -188,55 +188,87 @@
         <!-- What's in each tier -->
         <section class="section">
             <div class="container">
-                <div class="glass-card reveal">
-                    <h2 class="section-title">Maintenance by <span class="text-nebula">Plan Tier</span></h2>
-                    <p>The level of hands-on maintenance work scales with your plan. Here's exactly what's active on your site each month depending on your tier:</p>
+                <h2 class="section-title reveal">Maintenance by <span class="text-nebula">Plan Tier</span></h2>
+                <p class="reveal" style="text-align:center; margin-bottom: 2rem; color: var(--clr-text-secondary);">The level of hands-on maintenance work scales with your plan. Here's exactly what's active on your site each month.</p>
+                <div class="services-grid reveal-group">
 
-                    <div style="margin-top: 2rem; display: grid; gap: 1.5rem;">
-                        <div style="padding: 1.5rem; border: 1px solid rgba(160,155,184,0.15); border-radius: 12px;">
-                            <h3 style="margin-bottom: 0.75rem;">Stellar Starter — R320/mo</h3>
-                            <ul class="package-features" style="columns: 1;">
-                                <li>Monthly security &amp; malware scan</li>
-                                <li>SSL certificate validity &amp; renewal monitoring</li>
-                                <li>24/7 uptime monitoring with instant alerts</li>
-                                <li>Monthly site health check (links, forms, DNS)</li>
-                                <li>Weekly backup monitoring</li>
-                                <li>Monthly status report via WhatsApp or email</li>
-                                <li>WhatsApp &amp; email support — 48hr response</li>
-                            </ul>
+                    <!-- Stellar Starter -->
+                    <article class="glass-card pricing-card">
+                        <div class="package-header">
+                            <h3>Stellar Starter</h3>
+                            <p class="package-subtitle">Essential monitoring &amp; security for your site.</p>
                         </div>
-
-                        <div style="padding: 1.5rem; border: 1px solid rgba(160,155,184,0.3); border-radius: 12px; background: rgba(160,155,184,0.05);">
-                            <h3 style="margin-bottom: 0.75rem;">Nebula Business — R550/mo <span class="text-nebula" style="font-size: 0.8rem; font-weight: 400;">Most Popular</span></h3>
-                            <ul class="package-features" style="columns: 1;">
-                                <li>Everything in Stellar Starter</li>
-                                <li>Daily backup verification</li>
-                                <li>Monthly performance &amp; caching optimisation</li>
-                                <li>Broken link &amp; contact form testing</li>
-                                <li>Up to 1hr content updates per month</li>
-                                <li>Google Analytics traffic review</li>
-                                <li>Priority WhatsApp support — 24hr response</li>
-                                <li>Monthly performance report with analytics summary</li>
-                            </ul>
+                        <ul class="package-features">
+                            <li>Monthly security &amp; malware scan</li>
+                            <li>SSL certificate validity &amp; renewal monitoring</li>
+                            <li>24/7 uptime monitoring with instant alerts</li>
+                            <li>Monthly site health check (links, forms, DNS)</li>
+                            <li>Weekly backup monitoring</li>
+                            <li>Monthly status report via WhatsApp or email</li>
+                            <li>WhatsApp &amp; email support — 48hr response</li>
+                        </ul>
+                        <div class="package-pricing">
+                            <div class="price-item">
+                                <span class="price-label">Monthly Care Plan</span>
+                                <span class="price-value highlight">R 320 <small>p/mo</small></span>
+                            </div>
                         </div>
+                        <a href="/contact/" class="cta-button cta-button--full">Enquire Now</a>
+                    </article>
 
-                        <div style="padding: 1.5rem; border: 1px solid rgba(160,155,184,0.15); border-radius: 12px;">
-                            <h3 style="margin-bottom: 0.75rem;">Galactic Growth — R950/mo</h3>
-                            <ul class="package-features" style="columns: 1;">
-                                <li>Everything in Nebula Business</li>
-                                <li>Up to 3hrs content updates per month</li>
-                                <li>Monthly Core Web Vitals &amp; SEO health audit</li>
-                                <li>Speed &amp; performance deep audit</li>
-                                <li>Same-day emergency response SLA</li>
-                                <li>Quarterly design &amp; copy refresh</li>
-                                <li>Dedicated WhatsApp support line</li>
-                                <li>Monthly strategy report &amp; growth recommendations</li>
-                            </ul>
+                    <!-- Nebula Business -->
+                    <article class="glass-card pricing-card pricing-card--featured">
+                        <div class="featured-tag">Most Popular</div>
+                        <div class="package-header">
+                            <h3>Nebula Business</h3>
+                            <p class="package-subtitle">Active care with content updates &amp; analytics.</p>
                         </div>
-                    </div>
+                        <ul class="package-features">
+                            <li>Everything in Stellar Starter</li>
+                            <li>Daily backup verification</li>
+                            <li>Monthly performance &amp; caching optimisation</li>
+                            <li>Broken link &amp; contact form testing</li>
+                            <li>Up to 1hr content updates per month</li>
+                            <li>Google Analytics traffic review</li>
+                            <li>Priority WhatsApp support — 24hr response</li>
+                            <li>Monthly performance report with analytics summary</li>
+                        </ul>
+                        <div class="package-pricing">
+                            <div class="price-item">
+                                <span class="price-label">Monthly Care Plan</span>
+                                <span class="price-value highlight">R 550 <small>p/mo</small></span>
+                            </div>
+                        </div>
+                        <a href="/contact/" class="cta-button cta-button--full cta-button--filled">Enquire Now</a>
+                    </article>
 
-                    <p style="margin-top: 1.5rem;">View the full plan comparison — including hosting infrastructure details — on our <a href="/hosting/" class="card-link">Website Care &amp; Growth Plans page</a>.</p>
+                    <!-- Galactic Growth -->
+                    <article class="glass-card pricing-card">
+                        <div class="package-header">
+                            <h3>Galactic Growth</h3>
+                            <p class="package-subtitle">Full-service care, audits &amp; strategy support.</p>
+                        </div>
+                        <ul class="package-features">
+                            <li>Everything in Nebula Business</li>
+                            <li>Up to 3hrs content updates per month</li>
+                            <li>Monthly Core Web Vitals &amp; SEO health audit</li>
+                            <li>Speed &amp; performance deep audit</li>
+                            <li>Same-day emergency response SLA</li>
+                            <li>Quarterly design &amp; copy refresh</li>
+                            <li>Dedicated WhatsApp support line</li>
+                            <li>Monthly strategy report &amp; growth recommendations</li>
+                        </ul>
+                        <div class="package-pricing">
+                            <div class="price-item">
+                                <span class="price-label">Monthly Care Plan</span>
+                                <span class="price-value highlight">R 950 <small>p/mo</small></span>
+                            </div>
+                        </div>
+                        <a href="/contact/" class="cta-button cta-button--full">Enquire Now</a>
+                    </article>
+
                 </div>
+                <p class="reveal" style="text-align:center; margin-top: 1.5rem; color: var(--clr-text-secondary);">View the full plan comparison — including hosting infrastructure details — on our <a href="/hosting/" class="card-link">Website Care &amp; Growth Plans page</a>.</p>
             </div>
         </section>
 
