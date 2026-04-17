@@ -1285,6 +1285,16 @@ body.nav-open {
     position: relative;
 }
 
+/* Invisible bridge so cursor can travel through the gap without losing :hover */
+.nav-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    right: -20px;
+    height: 18px;
+}
+
 .nav-dropdown-toggle {
     display: flex;
     align-items: center;

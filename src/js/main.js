@@ -266,6 +266,13 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Escape key closes mobile nav and desktop dropdowns
+document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    closeMenu();
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(d => d.classList.remove('is-open'));
+});
+
 // --- SWUP ---
 
 const swup = new Swup({
