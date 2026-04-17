@@ -248,19 +248,24 @@ if (navToggle && navList) {
     });
 }
 
+// Detect mobile-nav mode from CSS, not pixel width — matches the media query exactly
+// and handles landscape orientation correctly.
+const isMobileNav = () => !!navToggle && window.getComputedStyle(navToggle).display !== 'none';
+
 // Mobile dropdown toggle (desktop uses CSS :hover)
 document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
     toggle.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            const dropdown = toggle.closest('.nav-dropdown');
-            dropdown.classList.toggle('is-open');
-        }
+        if (!isMobileNav()) return; // desktop: CSS :hover handles it, let link navigate normally
+        e.preventDefault();
+        e.stopPropagation(); // stop the click reaching the document close-handler below
+        toggle.closest('.nav-dropdown').classList.toggle('is-open');
     });
 });
 
-// Close dropdown when clicking outside (desktop)
+// Close open dropdowns when clicking outside — desktop only.
+// On mobile the hamburger overlay handles its own close logic.
 document.addEventListener('click', (e) => {
+    if (isMobileNav()) return;
     if (!e.target.closest('.nav-dropdown')) {
         document.querySelectorAll('.nav-dropdown.is-open').forEach(d => d.classList.remove('is-open'));
     }
