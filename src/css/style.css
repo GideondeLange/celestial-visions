@@ -1580,6 +1580,11 @@ body.nav-open {
         display: block;
     }
 
+    /* Desktop-only hover bridge — not needed on mobile */
+    .nav-dropdown::after {
+        display: none;
+    }
+
     /* Mobile dropdown — expand inline inside the fullscreen nav overlay */
     .nav-dropdown-menu {
         position: static;
@@ -1612,6 +1617,12 @@ body.nav-open {
         font-family: var(--ff-display);
         letter-spacing: 0.03em;
         padding: 0.3rem 1rem;
+        background: transparent;
+        color: var(--clr-text-secondary);
+    }
+
+    .nav-dropdown-item:hover {
+        color: var(--clr-accent);
         background: transparent;
     }
 
