@@ -1585,10 +1585,14 @@ body.nav-open {
         display: none;
     }
 
-    /* Mobile dropdown — expand inline inside the fullscreen nav overlay */
+    /* Mobile dropdown — expand inline inside the fullscreen nav overlay.
+       nav ul applies opacity:0 / pointer-events:none / transform to ALL
+       nested <ul>s, so we must reset them here for .nav-dropdown-menu. */
     .nav-dropdown-menu {
         position: static;
         transform: none;
+        opacity: 1;
+        pointer-events: auto;
         left: auto;
         min-width: unset;
         background: transparent;
