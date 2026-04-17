@@ -248,22 +248,31 @@ if (navToggle && navList) {
     });
 }
 
-// Detect mobile-nav mode from CSS, not pixel width — matches the media query exactly
-// and handles landscape orientation correctly.
+// Detect mobile-nav mode from CSS — more reliable than pixel-width check.
 const isMobileNav = () => !!navToggle && window.getComputedStyle(navToggle).display !== 'none';
 
-// Mobile dropdown toggle (desktop uses CSS :hover)
+// Mobile dropdown toggle
+// On mobile, touchstart fires before Swup's PreloadPlugin can intercept the link.
+// preventDefault() on touchstart cancels all subsequent synthesised mouse/click
+// events, so Swup never sees a navigable click and the link never follows its href.
+// { passive: false } is required to allow preventDefault() inside touchstart.
 document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-        if (!isMobileNav()) return; // desktop: CSS :hover handles it, let link navigate normally
+    toggle.addEventListener('touchstart', (e) => {
+        if (!isMobileNav()) return;
         e.preventDefault();
-        e.stopPropagation(); // stop the click reaching the document close-handler below
+        toggle.closest('.nav-dropdown').classList.toggle('is-open');
+    }, { passive: false });
+
+    // Fallback for non-touch (keyboard Enter, desktop dev tools in mobile mode)
+    toggle.addEventListener('click', (e) => {
+        if (!isMobileNav()) return;
+        e.preventDefault();
+        e.stopPropagation();
         toggle.closest('.nav-dropdown').classList.toggle('is-open');
     });
 });
 
 // Close open dropdowns when clicking outside — desktop only.
-// On mobile the hamburger overlay handles its own close logic.
 document.addEventListener('click', (e) => {
     if (isMobileNav()) return;
     if (!e.target.closest('.nav-dropdown')) {
