@@ -14,6 +14,7 @@ export default defineConfig({
         contact: resolve(__dirname, 'contact/index.html'),
         hosting: resolve(__dirname, 'hosting/index.html'),
         maintenance: resolve(__dirname, 'maintenance/index.html'),
+        privacyPolicy: resolve(__dirname, 'privacy-policy/index.html'),
       },
     },
   },
