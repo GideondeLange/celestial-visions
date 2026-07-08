@@ -117,19 +117,25 @@ function initContent() {
     // 2. Hero Entrance — tighter timing
     const heroTitle = document.querySelector('#hero-title');
     if (heroTitle) {
+        const heroBadge = document.querySelector('#hero-badge');
         const heroSubtitle = document.querySelector('#hero-subtitle');
         const heroCta = document.querySelector('#hero-cta-container');
+        const heroStats = document.querySelector('#hero-stats');
 
         const toAnimate = [heroTitle];
+        if (heroBadge) toAnimate.push(heroBadge);
         if (heroSubtitle) toAnimate.push(heroSubtitle);
         if (heroCta) toAnimate.push(heroCta);
+        if (heroStats) toAnimate.push(heroStats);
 
         gsap.set(toAnimate, { opacity: 0, y: 20 });
 
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-        tl.to(heroTitle, { opacity: 1, y: 0, duration: 1.1, delay: 0.3 });
+        if (heroBadge)    tl.to(heroBadge,    { opacity: 1, y: 0, duration: 0.7, delay: 0.15 });
+        tl.to(heroTitle, { opacity: 1, y: 0, duration: 1.1 }, heroBadge ? '-=0.4' : '+=0.3');
         if (heroSubtitle) tl.to(heroSubtitle, { opacity: 1, y: 0, duration: 0.9 }, '-=0.7');
         if (heroCta)      tl.to(heroCta,      { opacity: 1, y: 0, duration: 0.7 }, '-=0.6');
+        if (heroStats)    tl.to(heroStats,    { opacity: 1, y: 0, duration: 0.7 }, '-=0.45');
     }
 
     // 3. Individual .reveal elements — simple fade-up, no clipPath
@@ -152,7 +158,7 @@ function initContent() {
 
     // 4. Staggered card groups
     gsap.utils.toArray('.reveal-group').forEach(container => {
-        const children = container.querySelectorAll('.glass-card, .feature-card, .portfolio-item, .icon-feature');
+        const children = container.querySelectorAll('.glass-card, .feature-card, .portfolio-item, .icon-feature, .process-step');
         if (children.length === 0) return;
         gsap.fromTo(children,
             { opacity: 0, y: 32 },
@@ -174,6 +180,21 @@ function initContent() {
     // 5. Contact Form
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
+        const statusBox = document.getElementById('form-status');
+        const statusTitle = statusBox?.querySelector('h3');
+        const statusText = statusBox?.querySelector('p');
+
+        const showStatus = (type, title, text) => {
+            if (!statusBox) return;
+            statusTitle.innerText = title;
+            statusText.innerText = text;
+            statusBox.classList.remove('is-success', 'is-error', 'is-visible');
+            statusBox.classList.add(type === 'success' ? 'is-success' : 'is-error');
+            statusBox.hidden = false;
+            requestAnimationFrame(() => statusBox.classList.add('is-visible'));
+            statusBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        };
+
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = contactForm.querySelector('.submit-button');
@@ -191,6 +212,7 @@ function initContent() {
                 if (response.ok) {
                     submitBtn.innerText = 'Message Sent';
                     contactForm.reset();
+                    showStatus('success', 'Thank you for your enquiry!', "Your message has been sent successfully — we'll get back to you within 24 hours.");
                     setTimeout(() => {
                         submitBtn.innerText = originalText;
                         submitBtn.disabled = false;
@@ -199,8 +221,9 @@ function initContent() {
                     throw new Error();
                 }
             } catch {
-                submitBtn.innerText = 'Something went wrong — try again';
+                submitBtn.innerText = originalText;
                 submitBtn.disabled = false;
+                showStatus('error', 'Something went wrong', 'Your message could not be sent. Please try again, or email us directly at gideon@celestialvisions.co.za.');
             }
         });
     }
@@ -218,6 +241,27 @@ function handleCameraScroll() {
         ease: 'power1.out'
     });
 }
+
+// --- GLOBAL MICRO-INTERACTIONS ---
+// Initialised once; survive Swup page swaps via delegation / persistent elements
+
+// Cursor spotlight on glass cards — feeds --mx/--my to the ::after radial gradient
+document.addEventListener('pointermove', (e) => {
+    const card = e.target.closest && e.target.closest('.glass-card');
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+});
+
+// Scroll progress bar
+const scrollProgress = document.createElement('div');
+scrollProgress.className = 'scroll-progress';
+document.body.appendChild(scrollProgress);
+window.addEventListener('scroll', () => {
+    const max = document.body.scrollHeight - window.innerHeight;
+    scrollProgress.style.transform = 'scaleX(' + (max > 0 ? window.pageYOffset / max : 0) + ')';
+}, { passive: true });
 
 // --- HAMBURGER MENU ---
 // Nav is outside #swup so it persists — init once, not inside initContent
