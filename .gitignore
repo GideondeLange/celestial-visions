@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Mail credentials - generated at deploy time from GitHub Secrets. Never commit.
+mail-config.php
+public/mail-config.php

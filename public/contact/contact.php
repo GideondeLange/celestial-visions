@@ -1,44 +1,112 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recipient email
-    $to = "gideon@celestialvisions.co.za";
-    
-    // Form fields
-    $name = strip_tags(trim($_POST["name"]));
-    $email = filter_var(trim($_POST["_replyto"]), FILTER_SANITIZE_EMAIL);
-    $subject_input = strip_tags(trim($_POST["subject"]));
-    $message_content = strip_tags(trim($_POST["message"]));
+/*
+  Celestial Visions — contact form mail handler
 
-    // Validate inputs
-    if (empty($name) || empty($message_content) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        http_response_code(400);
-        echo json_encode(["message" => "Please complete the form and provide a valid email."]);
-        exit;
-    }
+  Sends enquiries to the business mailbox over authenticated SMTP (PHPMailer)
+  instead of PHP mail().
 
-    // Email content
-    $subject = "Celestial Visions Transmission: " . ($subject_input ?: "New Inquiry");
-    $email_content = "Name: $name\n";
-    $email_content .= "Email: $email\n\n";
-    $email_content .= "Subject: $subject_input\n\n";
-    $email_content .= "Message:\n$message_content\n";
+  Why: mail() sends as an anonymous "noreply@" address from the web server,
+  which fails SPF/DKIM alignment and lands in spam (or is dropped when the
+  recipient is on the same host). Logging in to a real mailbox and sending
+  as that mailbox is properly authenticated and delivers to the inbox.
 
-    // Email headers
-    $headers = "From: Celestial Visions <noreply@celestialvisions.co.za>\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion();
+  Credentials live in ../mail-config.php, which is generated at deploy time
+  from GitHub Secrets and is NEVER committed to the repository.
+*/
 
-    // Send the email
-    if (mail($to, $subject, $email_content, $headers)) {
-        http_response_code(200);
-        echo json_encode(["message" => "Transmission received successfully."]);
-    } else {
-        http_response_code(500);
-        echo json_encode(["message" => "Oops! Something went wrong and we couldn't send your message."]);
-    }
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-} else {
-    http_response_code(403);
-    echo json_encode(["message" => "There was a problem with your submission, please try again."]);
+header('Content-Type: application/json; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['ok' => false, 'error' => 'Method not allowed']);
+    exit;
 }
-?>
+
+// Honeypot — bots fill hidden fields; humans never see it. Silently "succeed".
+if (!empty($_POST['company'])) {
+    echo json_encode(['ok' => true]);
+    exit;
+}
+
+$name    = trim($_POST['name'] ?? '');
+$email   = trim($_POST['_replyto'] ?? '');
+$subject = trim($_POST['subject'] ?? '');
+$message = trim($_POST['message'] ?? '');
+
+if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(422);
+    echo json_encode(['ok' => false, 'error' => 'Please complete the form and provide a valid email.']);
+    exit;
+}
+
+// Strip CR/LF from single-line fields (header-injection protection)
+$oneLine = fn($v) => str_replace(["\r", "\n"], ' ', $v);
+$name    = $oneLine($name);
+$email   = $oneLine($email);
+$subject = $oneLine($subject);
+
+// ---- Credentials -----------------------------------------------------------
+$configFile = __DIR__ . '/../mail-config.php';
+if (!file_exists($configFile)) {
+    error_log('Celestial Visions contact form: mail-config.php missing');
+    http_response_code(500);
+    echo json_encode(['ok' => false, 'error' => 'Mail not configured']);
+    exit;
+}
+require $configFile;   // defines SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_TO
+
+require __DIR__ . '/../lib/PHPMailer/Exception.php';
+require __DIR__ . '/../lib/PHPMailer/PHPMailer.php';
+require __DIR__ . '/../lib/PHPMailer/SMTP.php';
+
+$mail = new PHPMailer(true);
+
+try {
+    $mail->isSMTP();
+    $mail->Host       = SMTP_HOST;
+    $mail->SMTPAuth   = true;
+    $mail->Username   = SMTP_USER;
+    $mail->Password   = SMTP_PASS;
+    $mail->Port       = SMTP_PORT;
+    $mail->CharSet    = 'UTF-8';
+    $mail->Timeout    = 20;
+
+    // 465 = implicit SSL, 587/25 = STARTTLS
+    $mail->SMTPSecure = (SMTP_PORT == 465)
+        ? PHPMailer::ENCRYPTION_SMTPS
+        : PHPMailer::ENCRYPTION_STARTTLS;
+
+    // Envelope sender must be the authenticated mailbox
+    $mail->setFrom(SMTP_USER, 'Celestial Visions Website');
+    $mail->addAddress(MAIL_TO);
+    $mail->addReplyTo($email, $name);   // hit Reply -> goes to the customer
+
+    $mail->Subject = 'New website enquiry — ' . $name . ($subject !== '' ? ' (' . $subject . ')' : '');
+
+    $h = fn($v) => htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+    $row = fn($label, $value) =>
+        '<tr><td style="padding:2px 12px 2px 0;color:#666">' . $label . '</td><td>' . $h($value) . '</td></tr>';
+
+    $mail->isHTML(true);
+    $mail->Body = '<p>You have a new enquiry from the Celestial Visions website:</p>'
+        . '<table style="font-family:Arial,sans-serif;font-size:14px;border-collapse:collapse">'
+        . $row('Name', $name)
+        . $row('Email', $email)
+        . $row('Subject', $subject !== '' ? $subject : '—')
+        . '</table>'
+        . '<p style="margin-top:14px"><strong>Message:</strong><br>' . nl2br($h($message)) . '</p>';
+    $mail->AltBody = "You have a new enquiry from the Celestial Visions website:\n\n"
+        . "Name:    $name\nEmail:   $email\nSubject: $subject\n\nMessage:\n$message\n";
+
+    $mail->send();
+    echo json_encode(['ok' => true]);
+
+} catch (Exception $e) {
+    // Log the detail server-side; never leak SMTP internals to the browser
+    error_log('Celestial Visions contact form SMTP error: ' . $mail->ErrorInfo);
+    http_response_code(500);
+    echo json_encode(['ok' => false, 'error' => 'Mail failed']);
+}

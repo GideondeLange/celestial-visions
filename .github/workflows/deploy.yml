@@ -25,6 +25,29 @@ jobs:
       - name: 🏗️ Build Project
         run: npm run build
 
+      # Mail credentials come from GitHub Secrets and are written into the
+      # deploy folder only - never committed. SMTP_PASS is the one required
+      # secret; the rest default to the Hostinger mailbox settings.
+      # Values are base64-encoded so any character in a password is safe.
+      - name: 📧 Generate mail config
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST || 'smtp.hostinger.com' }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT || '465' }}
+          SMTP_USER: ${{ secrets.SMTP_USER || 'gideon@celestialvisions.co.za' }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO:   ${{ secrets.MAIL_TO   || 'gideon@celestialvisions.co.za' }}
+        run: |
+          b64() { printf '%s' "$1" | base64 -w0; }
+          {
+            echo '<?php'
+            echo "define('SMTP_HOST', base64_decode('$(b64 "$SMTP_HOST")'));"
+            echo "define('SMTP_PORT', $(printf '%d' "$SMTP_PORT"));"
+            echo "define('SMTP_USER', base64_decode('$(b64 "$SMTP_USER")'));"
+            echo "define('SMTP_PASS', base64_decode('$(b64 "$SMTP_PASS")'));"
+            echo "define('MAIL_TO',   base64_decode('$(b64 "$MAIL_TO")'));"
+          } > dist/mail-config.php
+          echo "mail-config.php written (SMTP_PASS set: $([ -n "$SMTP_PASS" ] && echo yes || echo 'NO - form will not send'))"
+
       - name: 🚀 Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

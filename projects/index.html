@@ -32,7 +32,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/src/css/style.css">
 
@@ -62,7 +62,6 @@
     </script>
 </head>
 <body>
-    <canvas id="bg-canvas"></canvas>
 
     <header>
         <div class="logo">
@@ -112,45 +111,70 @@
 
     <main id="swup" class="transition-fade">
         <header class="page-header">
-            <h1 id="hero-title">Our <span class="text-nebula">Work</span></h1>
-            <p id="hero-subtitle">A selection of websites we've built for businesses across South Africa.</p>
+            <p class="section-eyebrow">Selected Work</p>
+            <h1 id="hero-title">Real sites for <span class="text-nebula">real businesses</span></h1>
+            <p id="hero-subtitle">Every project below is live, built for a South African small business, and designed around how their customers actually find and contact them.</p>
         </header>
 
-        <section class="section">
-            <div class="container container--portfolio">
-                <div class="portfolio-grid reveal-group">
-                    <a class="portfolio-item" href="https://www.asad.co.za/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/asad-projects.jpg" alt="ASAD Projects website">
-                        <div class="portfolio-overlay">
-                            <h3>ASAD Projects</h3>
-                            <p>Construction &amp; Bespoke Steelwork</p>
-                            <span class="portfolio-link">Visit Site ↗</span>
+        <section class="section projects-section">
+            <div class="container">
+                <article class="project reveal">
+                    <a class="project-shot" href="https://www.asad.co.za/" target="_blank" rel="noopener noreferrer" aria-label="Visit ASAD Projects">
+                        <div class="browser">
+                            <div class="browser-bar"><span></span><span></span><span></span><em>asad.co.za</em></div>
+                            <div class="browser-view"><img src="/assets/project-asad.jpg" alt="ASAD Projects website homepage" loading="lazy" width="1440" height="900"></div>
                         </div>
                     </a>
-                    <a class="portfolio-item" href="https://dejagerwooddesigns.co.za/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/dejager-wood-designs.jpg" alt="De Jager Wood Designs website">
-                        <div class="portfolio-overlay">
-                            <h3>De Jager Wood Designs</h3>
-                            <p>Custom Wood Design &amp; Craftsmanship</p>
-                            <span class="portfolio-link">Visit Site ↗</span>
+                    <div class="project-info">
+                        <span class="project-num">01</span>
+                        <p class="project-cat">Construction & Steel Pods</p>
+                        <h2>ASAD Projects</h2>
+                        <p class="project-desc">A full catalogue site for a Boksburg builder of bespoke steel-and-timber living pods: every design with specs and pricing, a photo gallery, a journal, and a quote request form that lands straight in their inbox.</p>
+                        <ul class="project-tags"><li>Pod catalogue</li><li>Gallery</li><li>Blog</li><li>Quote form</li></ul>
+                        <a class="cta-button" href="https://www.asad.co.za/" target="_blank" rel="noopener noreferrer">Visit live site &nearr;</a>
+                    </div>
+                </article>
+
+                <article class="project reveal project--flip">
+                    <a class="project-shot" href="https://dejagerwooddesigns.co.za/" target="_blank" rel="noopener noreferrer" aria-label="Visit De Jager Wood Designs">
+                        <div class="browser">
+                            <div class="browser-bar"><span></span><span></span><span></span><em>dejagerwooddesigns.co.za</em></div>
+                            <div class="browser-view"><img src="/assets/project-dejager.jpg" alt="De Jager Wood Designs website homepage" loading="lazy" width="1440" height="900"></div>
                         </div>
                     </a>
-                    <a class="portfolio-item" href="https://stardusthairdesign.co.za/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/stardust-hair-design.jpg" alt="Stardust Hair Design website">
-                        <div class="portfolio-overlay">
-                            <h3>Stardust Hair Design</h3>
-                            <p>Hair Salon &amp; Beauty Studio</p>
-                            <span class="portfolio-link">Visit Site ↗</span>
+                    <div class="project-info">
+                        <span class="project-num">02</span>
+                        <p class="project-cat">Custom Wood & Epoxy</p>
+                        <h2>De Jager Wood Designs</h2>
+                        <p class="project-desc">A dark, product-first website for a Benoni workshop making custom resin tables and live-edge slabs, built so customers can browse the work and start an order over WhatsApp in one tap.</p>
+                        <ul class="project-tags"><li>Product showcase</li><li>Gallery</li><li>WhatsApp orders</li><li>Blog</li></ul>
+                        <a class="cta-button" href="https://dejagerwooddesigns.co.za/" target="_blank" rel="noopener noreferrer">Visit live site &nearr;</a>
+                    </div>
+                </article>
+
+                <article class="project reveal">
+                    <a class="project-shot" href="https://stardusthairdesign.co.za/" target="_blank" rel="noopener noreferrer" aria-label="Visit Stardust Hair Design">
+                        <div class="browser">
+                            <div class="browser-bar"><span></span><span></span><span></span><em>stardusthairdesign.co.za</em></div>
+                            <div class="browser-view"><img src="/assets/project-stardust.jpg" alt="Stardust Hair Design website homepage" loading="lazy" width="1440" height="900"></div>
                         </div>
                     </a>
-                </div>
+                    <div class="project-info">
+                        <span class="project-num">03</span>
+                        <p class="project-cat">Salon & Beauty Studio</p>
+                        <h2>Stardust Hair Design</h2>
+                        <p class="project-desc">A bright, welcoming site for a hair, nails and beauty studio, introducing the team and laying out every service, from laser treatments to nails, so clients know exactly what to book.</p>
+                        <ul class="project-tags"><li>Service menu</li><li>Team intro</li><li>Contact page</li></ul>
+                        <a class="cta-button" href="https://stardusthairdesign.co.za/" target="_blank" rel="noopener noreferrer">Visit live site &nearr;</a>
+                    </div>
+                </article>
             </div>
         </section>
 
         <section class="section text-center">
             <div class="container">
                 <div class="glass-card reveal contact-card">
-                    <h2 class="section-title">Ready to <span class="text-nebula">Start Your Project?</span></h2>
+                    <h2 class="section-title">Want a site like <span class="text-nebula">these?</span></h2>
                     <p class="contact-desc">Let's build something great for your business.</p>
                     <a href="/contact/" class="cta-button">Get in Touch</a>
                 </div>

@@ -32,7 +32,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/src/css/style.css">
 
@@ -63,7 +63,6 @@
     </script>
 </head>
 <body>
-    <canvas id="bg-canvas"></canvas>
 
     <header>
         <div class="logo">
@@ -124,6 +123,7 @@
                 <div class="glass-card reveal">
                     <h2 class="section-title">Send Us a <span class="text-nebula">Message</span></h2>
                     <form action="/contact/contact.php" method="POST" class="contact-form" id="contact-form">
+                        <div style="position:absolute;left:-9999px;" aria-hidden="true"><label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="name">Full Name</label>

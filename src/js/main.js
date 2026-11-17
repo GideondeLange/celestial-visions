@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Swup from 'swup';
@@ -6,95 +5,6 @@ import SwupPreloadPlugin from '@swup/preload-plugin';
 import SwupBodyClassPlugin from '@swup/body-class-plugin';
 
 gsap.registerPlugin(ScrollTrigger);
-
-// Three.js Starfield Background - PERSISTENT
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector('#bg-canvas'),
-    antialias: true,
-    alpha: true
-});
-
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
-
-const starCount = 1000;
-const positions = new Float32Array(starCount * 3);
-for (let i = 0; i < starCount; i++) {
-    let x, y, z;
-    do {
-        x = (Math.random() - 0.5) * 150;
-        y = (Math.random() - 0.5) * 150;
-        z = (Math.random() - 0.5) * 150;
-    } while (Math.abs(x) < 5 && Math.abs(y) < 5 && z > 20);
-    positions[i * 3]     = x;
-    positions[i * 3 + 1] = y;
-    positions[i * 3 + 2] = z;
-}
-
-const starGeometry = new THREE.BufferGeometry();
-starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-const starMaterial = new THREE.PointsMaterial({
-    color: 0xffffff,
-    size: 0.22,
-    transparent: true,
-    opacity: 0.9,
-    sizeAttenuation: true
-});
-
-const starfield = new THREE.Points(starGeometry, starMaterial);
-scene.add(starfield);
-
-scene.add(new THREE.AmbientLight(0xffffff, 0.4));
-const plight = new THREE.PointLight(0x7c5cfc, 1.5);
-plight.position.set(10, 10, 10);
-scene.add(plight);
-
-let mouseX = 0;
-let mouseY = 0;
-let targetMouseX = 0;
-let targetMouseY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-});
-
-let currentRotationX = 0;
-let currentRotationY = 0;
-
-function animate() {
-    requestAnimationFrame(animate);
-
-    mouseX += (targetMouseX - mouseX) * 0.05;
-    mouseY += (targetMouseY - mouseY) * 0.05;
-
-    const targetRotY = mouseX * 0.2;
-    const targetRotX = mouseY * 0.2;
-
-    // Reduced parallax intensity — was 5, now 2
-    const targetCamX = mouseX * 2;
-    const targetCamY = -mouseY * 2;
-
-    starfield.rotation.y += (targetRotY - starfield.rotation.y) * 0.05;
-    starfield.rotation.x += (targetRotX - starfield.rotation.x) * 0.05;
-
-    camera.position.x += (targetCamX - camera.position.x) * 0.05;
-    camera.position.y += (targetCamY - camera.position.y) * 0.05;
-
-    starfield.rotation.y += 0.0005;
-
-    renderer.render(scene, camera);
-}
-animate();
-
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
 
 // --- PAGE-SPECIFIC INITIALIZATION ---
 
@@ -228,31 +138,10 @@ function initContent() {
         });
     }
 
-    // 6. Camera scroll parallax
-    window.removeEventListener('scroll', handleCameraScroll);
-    window.addEventListener('scroll', handleCameraScroll);
-}
-
-function handleCameraScroll() {
-    const scrollPercent = window.pageYOffset / (document.body.scrollHeight - window.innerHeight);
-    gsap.to(camera.position, {
-        z: 30 - scrollPercent * 15,
-        duration: 1,
-        ease: 'power1.out'
-    });
 }
 
 // --- GLOBAL MICRO-INTERACTIONS ---
 // Initialised once; survive Swup page swaps via delegation / persistent elements
-
-// Cursor spotlight on glass cards — feeds --mx/--my to the ::after radial gradient
-document.addEventListener('pointermove', (e) => {
-    const card = e.target.closest && e.target.closest('.glass-card');
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-    card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-});
 
 // Scroll progress bar
 const scrollProgress = document.createElement('div');
