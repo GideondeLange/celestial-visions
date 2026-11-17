@@ -80,13 +80,19 @@ try {
         : PHPMailer::ENCRYPTION_STARTTLS;
 
     // Envelope sender must be the authenticated mailbox
-    $mail->setFrom(SMTP_USER, 'Celestial Visions Website');
+    // Show the customer's name as the sender so the inbox reads "Dawid Gideon"
+    // rather than "Celestial Visions Website". The address stays the mailbox.
+    $mail->setFrom(SMTP_USER, $name . ' (via website)');
     $mail->addAddress(MAIL_TO);
     $mail->addReplyTo($email, $name);   // hit Reply -> goes to the customer
 
     $mail->Subject = 'New website enquiry — ' . $name . ($subject !== '' ? ' (' . $subject . ')' : '');
 
     $h = fn($v) => htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+
+    // One-click reply: opens a new email to the customer, pre-addressed, from any mail app
+    $replySubject = 'Re: ' . ($subject !== '' ? $subject : 'Your enquiry to Celestial Visions');
+    $replyLink = 'mailto:' . rawurlencode($email) . '?subject=' . rawurlencode($replySubject);
     $row = fn($label, $value) =>
         '<tr><td style="padding:2px 12px 2px 0;color:#666">' . $label . '</td><td>' . $h($value) . '</td></tr>';
 
@@ -97,9 +103,12 @@ try {
         . $row('Email', $email)
         . $row('Subject', $subject !== '' ? $subject : '—')
         . '</table>'
-        . '<p style="margin-top:14px"><strong>Message:</strong><br>' . nl2br($h($message)) . '</p>';
+        . '<p style="margin-top:14px"><strong>Message:</strong><br>' . nl2br($h($message)) . '</p>'
+        . '<p style="margin-top:22px"><a href="' . $h($replyLink) . '" style="display:inline-block;padding:11px 22px;background:#4338ca;color:#ffffff;text-decoration:none;border-radius:4px;font-family:Arial,sans-serif;font-size:14px;font-weight:bold">Reply to ' . $h($name) . '</a></p>'
+        . '<p style="font-family:Arial,sans-serif;font-size:12px;color:#777">Or just email them directly: <a href="mailto:' . $h($email) . '">' . $h($email) . '</a></p>';
     $mail->AltBody = "You have a new enquiry from the Celestial Visions website:\n\n"
-        . "Name:    $name\nEmail:   $email\nSubject: $subject\n\nMessage:\n$message\n";
+        . "Name:    $name\nEmail:   $email\nSubject: $subject\n\nMessage:\n$message\n\n"
+        . "To reply, email: $email\n";
 
     $mail->send();
     echo json_encode(['ok' => true]);
